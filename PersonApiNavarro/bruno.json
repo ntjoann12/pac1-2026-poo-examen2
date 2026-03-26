@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "ApisNavarro",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

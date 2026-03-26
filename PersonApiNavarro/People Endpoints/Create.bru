@@ -1,0 +1,35 @@
+meta {
+  name: Create
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{PATH_URL}}/person
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+                  "DNI" : "0501200710859",
+                  "FirstName" : "Andrea Michelle",
+                  "LastName" : "Moncada Carbajal",
+     "BirthDate" : "2007-09-12",
+                   "Gender" : "F",
+      "countryId" : "4f55a1b2-0073-4c3d-8e9f-a1b2c3d4e573"
+                 
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
+
+docs {
+  ## Validaciones
+  
+  Pais requerido
+  FirstName: Es requerido 
+}

@@ -1,0 +1,21 @@
+meta {
+  name: GetImc
+  type: http
+  seq: 1
+}
+
+get {
+  url: api/salud/imc?peso=80&altura=1.70
+  body: none
+  auth: inherit
+}
+
+params:query {
+  peso: 80
+  altura: 1.70
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

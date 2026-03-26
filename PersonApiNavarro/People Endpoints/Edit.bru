@@ -1,0 +1,29 @@
+meta {
+  name: Edit
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{PATH_URL}}/person/affec662-77db-4e7f-9d65-916e4ef19298
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+                 "dni": "0318200719827",
+                "firstName": "Martin Alejandro 3",
+                "LastName": "Rodriguez Alvarado",
+               "birthDate": "1998-08-21",
+                 "gender": "M",
+             "countryId": "4f55a1b2-0002-4c3d-8e9f-a1b2c3d4e502"
+                  
+                 
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

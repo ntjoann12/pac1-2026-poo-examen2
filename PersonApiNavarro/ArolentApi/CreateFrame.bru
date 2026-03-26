@@ -1,0 +1,30 @@
+meta {
+  name: CreateFrame
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{PATH_URL}}/frame
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "Id": null,
+    "numeroDeSerie": "ICONIC-123",
+    "marca": "RayBan",
+    "color": "Negro",
+    "precio": 1500.00,
+    "medidaLongitud": 14.5,
+    "medidaSeparacion": 2.0,
+    "estado": "disponible",
+    "personaId": null
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
