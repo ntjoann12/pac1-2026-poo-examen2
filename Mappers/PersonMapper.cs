@@ -1,3 +1,4 @@
+using System.Reflection.Metadata;
 using Humanizer;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using PersonsApp.Dtos.Countries;
@@ -8,47 +9,48 @@ using PersonsApp.Entities;
     {
         public static class PersonMapper
         {
-            public static PersonEntity CreateDtoToEntity(PersonCreateDto dto)
+            public static EmployeeEntity CreateDtoToEntity(EmployeeCreateDto dto)
             {
-                return new PersonEntity
+                return new EmployeeEntity
                 {
-                    Id = Guid.NewGuid().ToString(),//Uno lo genera porque el dto no lo recibe\
-                    DNI = dto.DNI,
-                    FirstName = dto.FirstName,
-                    LastName = dto.LastName, 
-                    BirthDate = dto.BirthDate,
-                    Gender = dto.Gender,
-                    CountryId = dto.CountryId
+                    EmployeeId = 1,
+                    Name = dto.Name,
+                    LastName = dto.LastName,
+                    Document = dto.Document,
+                    HiringDate = dto.HiringDate,
+                    Department= dto.Department,
+                    PositionJob = dto.PositionJob,
+                    BaseSalary = dto.BaseSalary,
+                    Activity = dto.Activity
 
                 };
             }
-         public static PersonEntity EditDtoToEntity (PersonEntity entity, PersonEditDto dto)
+         public static EmployeeEntity EditDtoToEntity (EmployeeEntity entity, EmployeeEditDto dto)
         {
-            entity.FirstName = dto.FirstName;
+            entity.EmployeeId = dto.EmployeeId;
+            entity.Name = dto.Name;
             entity.LastName = dto.LastName;
-            entity.DNI = dto.DNI;
-            entity.BirthDate = dto.BirthDate;
-            entity.Gender = dto.Gender;
-            entity.CountryId = dto.CountryId;
-
+            entity.Document = dto.Document;
+            entity.HiringDate = dto.HiringDate;
+            entity.Department = dto.Department;
+            entity.PositionJob = dto.PositionJob;
+            entity.BaseSalary = dto.BaseSalary;
+            entity.Activity = dto.Activity;
 
             return entity;
         }
-        public static List <PersonDto> ListEntityToListDto(List<PersonEntity> entities) //Devuelve una lista de person DtO y recibe una entidad de personas en formato lista
+        public static List <EmployeeDto> ListEntityToListDto(List<EmployeeEntity> entities) //Devuelve una lista de person DtO y recibe una entidad de personas en formato lista
         {
-            var dtos = entities.Select(person => new PersonDto
+            var dtos = entities.Select(employee => new EmployeeDto
             {
-                Id = person.Id,
-                DNI = person.DNI,
-                FirstName = person.FirstName,
-                LastName = person.LastName, 
-                BirthDate = person.BirthDate,
-                Gender = person.Gender,
-                Country = new CountryOneDto
-                {
-                    Id = person.Country.Id,
-                    Name = person.Country.Name,
-                }
+                EmployeeId = employee.EmployeeId,
+                Name = employee.Name,
+                LastName = employee.LastName,
+                Document = employee.Document,
+                HiringDate = employee.HiringDate,
+                Department = employee.Department,
+                PositionJob = employee.PositionJob,
+                BaseSalary = employee.BaseSalary
             }).ToList();
             return dtos;
         }

@@ -2856,11 +2856,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\OneDrive\\Desktop\\Developer C#\\Projects\\pac1-2026-poo\\PersonsApp\\PersonsApp.csproj",
+      "projectUniqueName": "C:\\Users\\User\\OneDrive\\Desktop\\ApiCreator\\PersonsApp\\PersonsApp.csproj",
       "projectName": "PersonsApp",
-      "projectPath": "C:\\Users\\User\\OneDrive\\Desktop\\Developer C#\\Projects\\pac1-2026-poo\\PersonsApp\\PersonsApp.csproj",
+      "projectPath": "C:\\Users\\User\\OneDrive\\Desktop\\ApiCreator\\PersonsApp\\PersonsApp.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\OneDrive\\Desktop\\Developer C#\\Projects\\pac1-2026-poo\\PersonsApp\\obj\\",
+      "outputPath": "C:\\Users\\User\\OneDrive\\Desktop\\ApiCreator\\PersonsApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -1,16 +1,18 @@
 using PersonsApp.Dtos.Common;
 using PersonsApp.Dtos.Persons;
 
-namespace PersonsApp.Services.Persons
+namespace PersonsApp.Services.Employees
 {
-    public interface IPersonService
+    public interface IEmployeeService
     {
-        Task<ResponseDto<PersonDto>> GetOneByIdAsync(string id); 
-        Task<ResponseDto<PersonActionResponseDto>> CreateAsync(PersonCreateDto dto);
-        Task<ResponseDto<PersonActionResponseDto>> EditAsync(string id, PersonEditDto dto);
+        Task<ResponseDto<PageDto<List<EmployeeDto>>>> GetAllEmployeesAsync(string searchTerm = "", int  page = 1, int pageSize = 10);
+        Task<ResponseDto<EmployeeDto>> GetOneEmployeeByIdAsync (int id);
+        Task<ResponseDto<EmployeeDto>> GetActiveEmployeesAsync (bool activity);
+        Task<ResponseDto<EmployeeActionResponseDto>> CreateEmployeeAsync(EmployeeCreateDto dto);
+        Task<ResponseDto<EmployeeActionResponseDto>> EditEmployeeAsync(int employeeid, EmployeeEditDto dto);
 
-        Task<ResponseDto<PersonActionResponseDto>> DeleteAsync(string id);
-        Task<ResponseDto<PageDto<List<PersonDto>>>> GetPageAsync(string searchTerm = "", int page = 1, int pageSize = 10);
+        Task<ResponseDto<EmployeeActionResponseDto>> DeleteEmployeeAsync (int employee_id);
+
 
     }
 }

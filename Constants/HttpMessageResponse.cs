@@ -9,6 +9,10 @@ namespace PersonsApp.Constants
         public const string REGISTER_UPDATED = "Registro editado satisfactoriamente.";
         public const string REGISTER_DELETED= "Registro borrado satisfactoriamente.";
         public const string REGISTERS_FOUND= "Registros encontrados.";
+        public const string REGISTERS_NOT_FOUND= "Registros no encontrados.";
+
+        public const string REGISTERS_SWITCH_STATE= "Registro inactivo.";
+
 
 
 

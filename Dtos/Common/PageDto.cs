@@ -12,7 +12,7 @@ namespace PersonsApp.Dtos.Common
         public int TotalPages { get; set; }
         public T Items { get; set; }
 
-        public static implicit operator PageDto<T>(PageDto<List<PersonDto>> v)
+        public static implicit operator PageDto<T>(PageDto<List<EmployeeDto>> v)
         {
             throw new NotImplementedException();
         }

@@ -10,7 +10,7 @@ using PersonsApp.DataBase;
 
 namespace PersonsApp.Migrations
 {
-    [DbContext(typeof(PersonsDbContext))]
+    [DbContext(typeof(AppDbContext))]
     [Migration("20260314013932_AddCountriesTableAndFieldCountryIdToPeopleTable")]
     partial class AddCountriesTableAndFieldCountryIdToPeopleTable
     {

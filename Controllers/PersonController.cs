@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Diagnostics;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using PersonsApp.Dtos.Persons;
 using PersonsApp.Entities;
-using PersonsApp.Services.Persons;
+using PersonsApp.Services.Employees;
 
 namespace PersonsApp.Controllers //Cunado se trabaja en api rest se trabaja de 2 formas, un minimal api y un controlador. Los controladores agrupan un conjunto de recursos que se exponen dentro de al api.
 {
@@ -17,8 +17,8 @@ namespace PersonsApp.Controllers //Cunado se trabaja en api rest se trabaja de 2
     public class PersonController : ControllerBase  //HERENCIA Todo lo que tiene controller base se lo hereda a PersonController
     {
 
-        private readonly IPersonService _personService;
-        public PersonController(IPersonService personService)
+        private readonly IEmployeeService _personService;
+        public PersonController(IEmployeeService personService)
         {
             _personService = personService;
         }
@@ -35,7 +35,7 @@ namespace PersonsApp.Controllers //Cunado se trabaja en api rest se trabaja de 2
             return StatusCode(result.StatusCode, result);
         }
         [HttpPost]//Funcion para creacion de persona (si no existe);
-        public async Task<IActionResult> Create(PersonCreateDto dto)
+        public async Task<IActionResult> Create(EmployeeCreateDto dto)
         {
 
             var result = await _personService.CreateAsync(dto);
@@ -43,7 +43,7 @@ namespace PersonsApp.Controllers //Cunado se trabaja en api rest se trabaja de 2
     
         }
         [HttpPut("{id}")]
-        public async Task<ActionResult> Update (string id, PersonEditDto dto)// dni es lo que busca a modificar, person es lo que modifica
+        public async Task<ActionResult> Update (string id, EmployeeEditDto dto)// dni es lo que busca a modificar, person es lo que modifica
         {
            var result = await _personService.EditAsync(id, dto);
            return StatusCode(result.StatusCode, result);

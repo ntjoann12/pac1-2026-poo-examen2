@@ -10,7 +10,7 @@ using PersonsApp.DataBase;
 
 namespace PersonsApp.Migrations
 {
-    [DbContext(typeof(PersonsDbContext))]
+    [DbContext(typeof(AppDbContext))]
     [Migration("20260305210138_BugFixed")]
     partial class BugFixed
     {

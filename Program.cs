@@ -1,13 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using PersonsApp.DataBase;
-using PersonsApp.Services.Persons;
+using PersonsApp.Services.Employees;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<PersonsDbContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"))); //Espera un generico <>
-builder.Services.AddTransient<IPersonService, PersonService>();
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"))); //Espera un generico <>
+builder.Services.AddTransient<IEmployeeService, EmployeeService>();
 builder.Services.AddOpenApi();
 
 builder.Services.AddControllers();
