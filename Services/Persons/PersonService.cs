@@ -46,7 +46,7 @@ namespace PersonsApp.Services.Employees
                 .Take(pageSize)
                 .ToListAsync();
             
-            var employeeDto = PersonMapper.ListEntityToListDto(employeeEntity);
+            var employeeDto = EmployeeMapper.ListEntityToListDto(employeeEntity);
 
             // respuesta
             return new ResponseDto<PageDto<List<EmployeeDto>>>
@@ -60,7 +60,7 @@ namespace PersonsApp.Services.Employees
                     PageSize = pageSize,
                     TotalItems = totalRows, 
                     TotalPages = (int)Math.Ceiling((double)totalRows/pageSize), //Cuando se pone entre parentesis, el tipo de dato que este en medio, se va a convertir al dato que escojamos
-                    Items = PersonMapper.ListEntityToListDto(employeeEntity),
+                    Items = EmployeeMapper.ListEntityToListDto(employeeEntity),
                     HasNextPage = startIndex + pageSize < PAGE_SIZE_LIMIT && 
                     page < (int)Math.Ceiling((double)totalRows/pageSize),
                     HasPreviousPage = page > 1
@@ -120,7 +120,7 @@ namespace PersonsApp.Services.Employees
                 .Take(pageSize)
                 .ToListAsync();
             
-            var employeeDto = PersonMapper.ListEntityToListDto(employeeEntity);
+            var employeeDto = EmployeeMapper.ListEntityToListDto(employeeEntity);
             
             if(searchTerm)
             {
@@ -136,7 +136,7 @@ namespace PersonsApp.Services.Employees
                             PageSize = pageSize,
                             TotalItems = totalRows, 
                             TotalPages = (int)Math.Ceiling((double)totalRows/pageSize), //Cuando se pone entre parentesis, el tipo de dato que este en medio, se va a convertir al dato que escojamos
-                            Items = PersonMapper.ListEntityToListDto(employeeEntity),
+                            Items = EmployeeMapper.ListEntityToListDto(employeeEntity),
                             HasNextPage = startIndex + pageSize < PAGE_SIZE_LIMIT && 
                             page < (int)Math.Ceiling((double)totalRows/pageSize),
                             HasPreviousPage = page > 1
@@ -152,7 +152,7 @@ namespace PersonsApp.Services.Employees
     public async Task<ResponseDto<EmployeeActionResponseDto>> CreateEmployeeAsync(EmployeeCreateDto dto) 
 
     {
-        EmployeeEntity employeeEntity = PersonMapper.CreateDtoToEntity(dto);
+        EmployeeEntity employeeEntity = EmployeeMapper.CreateDtoToEntity(dto);
         _context.Employees.Add(employeeEntity);
        
         await _context.SaveChangesAsync();
@@ -188,7 +188,7 @@ namespace PersonsApp.Services.Employees
                     };
                 }
 
-                PersonMapper.EditDtoToEntity(employeeEntity, dto);
+                EmployeeMapper.EditDtoToEntity(employeeEntity, dto);
 
                 await _context.SaveChangesAsync();
 

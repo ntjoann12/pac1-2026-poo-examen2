@@ -7,7 +7,7 @@ using PersonsApp.Entities;
 
     namespace PersonsApp.Mappers
     {
-        public static class PersonMapper
+        public static class EmployeeMapper
         {
             public static EmployeeEntity CreateDtoToEntity(EmployeeCreateDto dto)
             {
