@@ -20,6 +20,7 @@ namespace PersonsApp.Dtos.Persons
         public string Department { get; set; }
         public string PositionJob { get; set; }
         public decimal BaseSalary { get; set; }
+        public bool Activity { get; set; }
         
     }
 }

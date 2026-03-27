@@ -100,8 +100,9 @@ namespace PersonsApp.Services.Employees
             };
         }
     
-    public async Task<ResponseDto<PageDto<List<EmployeeDto>>>> GetActiveEmployeesAsync (string searchTerm = "", int  page = 1, int pageSize = 10)
+    public async Task<ResponseDto<PageDto<List<EmployeeDto>>>> GetActiveEmployeesAsync (bool searchTerm = true, int  page = 1, int pageSize = 10)
         {
+            
             page = Math.Abs(page);
             pageSize = Math.Abs(pageSize);
             pageSize = pageSize <= 0 ? PAGE_SIZE  : pageSize;//Si no viene nada en "pageSize" pone el valor por defecto, sino, agarra el valor asignado en pageSize
@@ -111,11 +112,8 @@ namespace PersonsApp.Services.Employees
 
             IQueryable<EmployeeEntity> employeesQuery = _context.Employees.Include(e => e.EmployeeId );
 
-            if(!string.IsNullOrEmpty(searchTerm))
-            {
-                employeesQuery = employeesQuery.Where( x => (x.EmployeeId + " " + x.Name + " " + x.LastName).Contains(searchTerm) ); //() es para concatenear
-            }
-            int totalRows = await employeesQuery .CountAsync(); //Muestra el total de registros
+
+            int totalRows = await employeesQuery.CountAsync(); //Muestra el total de registros
             var employeeEntity = await employeesQuery 
                 .OrderBy(x => x.Name)
                 .Skip(startIndex)
@@ -124,10 +122,10 @@ namespace PersonsApp.Services.Employees
             
             var employeeDto = PersonMapper.ListEntityToListDto(employeeEntity);
             
-            if (activity is true)
+            if(searchTerm)
             {
-                // respuesta
-                return new ResponseDto<PageDto<List<EmployeeDto>>>
+                employeesQuery = employeesQuery.Where(e => e.Activity == true);
+                 return new ResponseDto<PageDto<List<EmployeeDto>>>
                     {
                         StatusCode = HttpStatusCode.OK,
                         Status = true,
@@ -144,19 +142,10 @@ namespace PersonsApp.Services.Employees
                             HasPreviousPage = page > 1
                         }
                     };
-        
             }
 
-            return new ResponseDto<EmployeeActionResponseDto>
-            {
-                 StatusCode = HttpStatusCode.BAD_REQUEST,
-                Status = false,
-                Message = HttpMessageResponse.REGISTERS_NOT_FOUND,
-                Data = new EmployeeActionResponseDto
-                {
-                    Activity = false
-                }
-            };
+            return null;
+            
             
         }
 
